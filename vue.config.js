@@ -5,8 +5,8 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath: "/cli3",
-  outputDir: "dist/cli3",
+  publicPath: "/h5",
+  outputDir: "dist/h5",
 
   chainWebpack: config => {
     config.resolve.alias.set("@", resolve("src"));
@@ -39,12 +39,32 @@ module.exports = {
     }
   },
 
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          require("postcss-px-to-viewport")({
+            unitToConvert: "px",
+            viewportWidth: 750,
+            unitPrecision: 3,
+            propList: ["*"],
+            viewportUnit: "vw",
+            fontViewportUnit: "vw",
+            selectorBlackList: [],
+            minPixelValue: 1,
+            mediaQuery: false,
+            replace: true,
+            exclude: /(\/|\\)(node_modules)(\/|\\)/
+          })
+        ]
+      }
+    }
+  },
+
   pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'scss',
-      patterns: [
-        path.resolve(__dirname, './src/styles/utilCss.scss')
-      ]
+    "style-resources-loader": {
+      preProcessor: "scss",
+      patterns: [path.resolve(__dirname, "./src/styles/utilCss.scss")]
     }
   }
 };
