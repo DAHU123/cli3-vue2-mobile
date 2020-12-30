@@ -2,6 +2,11 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <button @click="handleClick">点击</button>
+
+    <van-button type="info">信息按钮</van-button>
+    <van-button color="linear-gradient(to right, #ff6034, #ee0a24)">
+      渐变色按钮
+    </van-button>
   </div>
 </template>
 
@@ -28,6 +33,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.hello {
+  font-size: 28px;
+}
 h3 {
   margin: 40px 0 0;
 }
